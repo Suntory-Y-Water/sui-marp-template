@@ -1,0 +1,57 @@
+/* @theme global */
+
+/* Custom theme affecting the entire slide */
+
+/* common */
+section *::selection {
+  background: rgba(110, 110, 255, 0.38);
+}
+
+/* link */
+a {
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+a:has(code) {
+  text-decoration-color: #2b2b2b;
+}
+section.invert a:has(code) {
+  text-decoration-color: #dedede;
+}
+header > a,
+header > a:hover,
+footer > a,
+footer > a:hover {
+  color: var(--color-header);
+}
+
+/* list */
+ol,
+ul {
+  margin-left: 2em;
+}
+section > ul > li,
+section > ol > li {
+  margin-bottom: .2em;
+}
+li {
+  padding-top: .2em;
+}
+
+/* mark */
+mark {
+  color: inherit;
+  background-color: inherit;
+}
+
+/* code block */
+marp-pre {
+  border-radius: 8px;
+}
+:not(marp-pre) code {
+  border-radius: 8px;
+}

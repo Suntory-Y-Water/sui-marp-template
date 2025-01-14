@@ -1,0 +1,96 @@
+#!/bin/bash
+# Script to check if the OGP image URLs for slides match the file structure and are correct
+
+# Exit early
+# See: https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#The-Set-Builtin
+set -e
+
+# Variables
+BASE_URL="https://yKicchan.github.io/awesome-marp-template"
+SRC_DIR="src"
+SLIDE_FILENAME="index.md"
+OGP_FILENAME="index.png"
+OGP_SET_PREFIX="image:"
+
+# Colors
+RED="\x1b[31m"
+GREEN="\x1b[32m"
+YELLOW="\x1b[33m"
+CYAN="\x1b[36m"
+OFF="\x1b[0m"
+
+# Underline
+INS="\x1b[4m"
+
+# Retrieve the paths of specified files
+slide_file_paths=$(find "$SRC_DIR" -type f -name "$SLIDE_FILENAME")
+if [[ -z "$slide_file_paths" ]]; then
+  echo -e "${YELLOW}No slide files found in $SRC_DIR.$OFF"
+  exit 0
+fi
+
+# Extract lines containing BASE_URL (i.e., lines with OGP settings) from the files
+actual_image_urls=$(grep -rh "$BASE_URL" "$SRC_DIR" | sed "s/^$OGP_SET_PREFIX//")
+# Generate the expected URLs
+expected_image_urls=$(echo "$slide_file_paths" | sed "s|$SRC_DIR|$BASE_URL|;s|$SLIDE_FILENAME|$OGP_FILENAME|")
+
+# Convert to arrays
+# shellcheck disable=SC2206
+slide_file_paths_arr=($slide_file_paths)
+# shellcheck disable=SC2206
+actual_image_urls_arr=($actual_image_urls)
+# shellcheck disable=SC2206
+expected_image_urls_arr=($expected_image_urls)
+
+# Array to record mismatched URLs
+mismatches=()
+path_idx=0
+expected_idx=1
+actual_idx=2
+
+# Compare the expected URLs with the actual URLs for each slide file
+for ((i = 0; i < ${#slide_file_paths_arr[@]}; i++)); do
+  path=${slide_file_paths_arr[$i]}
+  expected=${expected_image_urls_arr[$i]}
+  actual=${actual_image_urls_arr[$i]}
+  if [[ "$expected" != "$actual" ]]; then
+    # Record mismatched URLs
+    mismatches+=("$path $expected $actual")
+    mismatched_messages+=("File: $path\n${GREEN}- Expected: $expected\n${RED}- Actual: $actual${OFF}")
+  fi
+done
+
+# If all URLs match, exit normally
+if [[ ${#mismatches[@]} -eq 0 ]]; then
+  echo -e "${GREEN}All image URLs match the expected values.$OFF"
+  exit 0
+fi
+
+# If mismatched URLs exist, output an error
+for mismatch in "${mismatches[@]}"; do
+  read -r -a mismatch <<< "$mismatch"
+  echo -e "File: ${mismatch[path_idx]}\n${GREEN}- Expected: ${mismatch[expected_idx]}\n${RED}- Actual: ${mismatch[actual_idx]}${OFF}\n"
+done
+
+# If running on CI, exit with an error
+if [[ -n "$CI" ]]; then
+  echo -e "${RED}Mismatch found. Please fix the OGP image URLs.${OFF}"
+  echo -e "You can run the ${CYAN} pnpm run check ${OFF} command locally to fix the mismatched URLs."
+  exit 1
+fi
+
+# If running locally, ask the user if they want to fix the mismatched URLs
+echo -e "${YELLOW}Fix the mismatched opg image URLs?${OFF} [${INS}Y${OFF}/n]${OFF}"
+read -r answer
+if [[ "$answer" =~ ^[Nn]$ ]]; then
+  exit 1
+fi
+
+# Fix the mismatched URLs
+for mismatch in "${mismatches[@]}"; do
+  read -r -a mismatch <<< "$mismatch"
+  sed -i "" "s|${mismatch[actual_idx]}|${mismatch[expected_idx]}|" "${mismatch[path_idx]}"
+  echo -e "- Fixed in: ${CYAN}${mismatch[path_idx]}${OFF}."
+done
+echo -e "${GREEN}All ogp image URLs have been fixed.$OFF"
+exit 0

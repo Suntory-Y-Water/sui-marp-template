@@ -1,0 +1,89 @@
+#!/bin/bash
+# Script to initialize the repository by replacing all specific names
+
+# Exit early
+# See: https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#The-Set-Builtin
+set -e
+
+# variables
+OLD_USERNAME="yKicchan"
+OLD_REPOSITORY_NAME="awesome-marp-template"
+
+# colors
+GREEN="\x1b[32m"
+CYAN="\x1b[36m"
+YELLOW="\x1b[33m"
+MAGENTA="\x1b[35m"
+OFF="\x1b[0m"
+
+# 1. Input user GitHubID and Repository name
+echo -e "This script will ${GREEN}initialize the repository${OFF} for the GitHub ID and repository name you provide."
+read -p "Enter your GitHub ID: " github_id
+read -p "Enter your repository name: " repository_name
+
+while true; do
+  read -p "Are you sure? [y/n]: " answer
+  case $answer in
+    [Yy]* ) break;;
+    [Nn]* ) echo -e "${YELLOW}Canceled.${OFF}"; exit 0;;
+    * ) echo "Please answer y (yes) or n (no).";;
+  esac
+done
+echo ""
+echo -e "${GREEN}Initializing the repository...${OFF}"
+echo ""
+
+# Files to replace the GitHub ID with the user's
+replace_username_target_files=(
+  ".marprc.yml"
+  "package.json"
+  "README.md"
+  "themes/index.css"
+  "template/index.md"
+  "src/demo/index.md"
+  "scripts/check"
+)
+# Files to replace the repository name with the user's
+replace_repository_name_target_files=(
+  "package.json"
+  "template/index.md"
+  "README.md"
+  "scripts/check"
+  "src/demo/index.md"
+)
+
+# 2. Replace the GitHub ID and repository name in the target files
+echo -e "Replacing the GitHub ID..."
+for file in "${replace_username_target_files[@]}"; do
+  echo -e "in ${CYAN}${file}${OFF}"
+  sed -i '' "s|${OLD_USERNAME}|$github_id|g" "$file"
+done
+echo ""
+echo -e "Replacing the repository name..."
+for file in "${replace_repository_name_target_files[@]}"; do
+  echo -e "in ${CYAN}${file}${OFF}"
+  sed -i '' "s|${OLD_REPOSITORY_NAME}|$repository_name|g" "$file"
+done
+echo ""
+echo -e "${GREEN}All Done!${OFF}"
+echo ""
+
+# 3. Message to the user
+echo -e "Next steps:"
+echo -e "1. ${MAGENTA}Install Node.js and pnpm${OFF} if you haven't already."
+echo -e "2. ${MAGENTA}Run ${CYAN}pnpm install${OFF} to install the dependencies."
+echo -e "3. ${MAGENTA}Run ${CYAN}pnpm run new <slide-name>${OFF} to create a new slide set."
+echo -e "4. ${MAGENTA}Edit the slides${OFF} in the ${CYAN}src${OFF} directory,"
+echo -e "   and ${MAGENTA}Edit the theme${OFF} in the ${CYAN}themes${OFF} directory."
+echo -e "5. ${MAGENTA}Run ${CYAN}pnpm run dev${OFF} to start the development server, and ${MAGENTA}Access ${CYAN}http://localhost:8080${OFF} in your browser."
+echo ""
+echo -e "${GREEN}Enjoy creating slides with Marp! 🎉${OFF}"
+
+# 4. Remove the script itself
+read -p "Do you want to remove the script itself? [y/n]: " remove_script
+if [[ $remove_script == [Yy]* ]]; then
+  rm scripts/activate
+  echo -e "${GREEN}Script removed.${OFF}"
+else
+  echo -e "${YELLOW}Script not removed. You can delete it manually later.${OFF}"
+fi

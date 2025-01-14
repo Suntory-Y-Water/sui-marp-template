@@ -1,0 +1,13 @@
+/* @theme yKicchan */
+
+/* The Marp theme in use */
+/* See: https://github.com/marp-team/marp-core/blob/main/themes/README.md */
+@import 'gaia';
+
+/* Syntax highlighting with Prisma */
+/* Choice in: https://github.com/PrismJS/prism-themes/tree/master/themes */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css');
+
+/* Import custom theme */
+@import 'global';
+@import 'utility';

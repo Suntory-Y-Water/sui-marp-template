@@ -1,0 +1,8 @@
+#!/bin/bash
+# Script to generate a new slide set from the template
+# Also updates the OGP URL settings in the template according to the file structure
+
+mkdir -p src/$1
+cp -r template/* src/$1
+
+sed -i '' "s|{{PATH}}|$1|" src/$1/index.md

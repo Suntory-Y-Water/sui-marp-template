@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "themes/**"
+      - ".github/workflows/deploy.yml"
+
+env:
+  TZ: 'Asia/Tokyo'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Check if the OGP URLs and slide directory structure are correct
+      - name: Check OGP url
+        run: ./scripts/check
+      - name: Setup Node.js
+        uses: ./.github/actions/setup
+      # Install fonts to prevent character encoding issues
+      - name: Install font
+        run: sudo apt install fonts-noto
+      # Convert Marp slides to HTML and generate PDF and OGP images
+      - name: Build slides
+        run: pnpm run build
+      # Generate an index page for accessing each slide
+      - name: Generate directory listing
+        uses: yKicchan/generate-directory-listing-action@v1
+        with:
+          target: dist
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "dist/"
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

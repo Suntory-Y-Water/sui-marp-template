@@ -4,148 +4,148 @@ Language: [🇺🇸](./README.md) [🇯🇵](./README.ja.md)
 
 # Awesome Marp Template
 
-This repository is a template repository that allows you to create slides utilizing [Marp](https://marp.app/) to its fullest potential, with ease.
+このリポジトリは [Marp](https://marp.app/) を最強に活用したスライドを、超簡単に作成できるテンプレートリポジトリです。
 
-## 🚀 Features
+## 🚀 機能一覧
 
-- 🚀 Automatic deployment to [GitHubPages](https://yKicchan.github.io/awesome-marp-template/) via [GitHubActions](./.github/workflows/deploy.yml)
-- 🖼️ Support for setting OGP images for the title slide
-- 🚄 Lightweight slide creation using Markdown extended syntax
-- 🎨 Diverse slide expressions with CSS utility classes
-- 🔧 A script to easily create new slides from the template
+- 🚀 [GitHubActions](./.github/workflows/deploy.yml) による [GitHubPages](https://yKicchan.github.io/awesome-marp-template/) への自動デプロイ
+- 🖼️ タイトルスライドの OGP 画像設定サポート
+- 🚄 Markdown 拡張構文による軽量なスライド作成
+- 🎨 CSS ユーティリティクラスによる多彩なスライド表現
+- 🔧 新しいスライドをテンプレートから簡単に作成できるスクリプト
 
-For demo slides using this repository, please refer to [GitHubPages](https://yKicchan.github.io/awesome-marp-template/demo).  
-Build your own original slide environment using Markdown extended syntax and CSS utility classes!
+このリポジトリを利用したデモスライドは [GitHubPages](https://yKicchan.github.io/awesome-marp-template/demo) を参照してください。  
+Markdown 拡張構文や CSS ユーティリティクラスを使って、あなただけのオリジナルスライド環境を構築しましょう！
 
-## 📂 Directory Structure
+## 📂 ディレクトリ構造
 
-The contents of the main directories and files are as follows.  
-Feel free to customize them to suit your preferences!
+主要なディレクトリとファイルの内容は以下の通りです。  
+必要に応じて自分好みにカスタマイズしてください！
 
 ```plaintext
 .
-├── .marprc.yml     # Marp CLI configuration file
-├── engine.mjs      # Marp CLI engine extension
+├── .marprc.yml     # Marp CLI の設定ファイル
+├── engine.mjs      # Marp CLI の Engine 拡張
 ├── scripts/
-│   ├── check       # Script to check if the OGP URLs for the slides are correct
-│   ├── init        # Script for repository setup
-|   └── new         # Script to create new slides from the template
-├── src/            # Slide directory for deployment
-│    └── demo/      # Demo slide directory
-├── template/       # Template slide directory
+│   ├── check       # スライドの OGP の URL が正しいかチェックするスクリプト
+│   ├── init        # リポジトリのセットアップを行うスクリプト
+|   └── new         # 新しいスライドをテンプレートから作成するスクリプト
+├── src/            # スライド用のディレクトリで、デプロイされる
+│    └── demo/      # デモ用のスライドディレクトリ
+├── template/       # テンプレートスライド用ディレクトリ
 └── themes
-    ├── global.css  # Custom theme affecting the entire slide
-    ├── index.css   # Entry point for the custom theme
-    └── utility.css # Various utility classes used in the slides
+    ├── global.css  # スライド全体に影響させるカスタムテーマ
+    ├── index.css   # カスタムテーマのエントリーポイント
+    └── utility.css # スライドで利用する各種ユーティリティクラス
 ```
 
-## ✅ Requirements
+## ✅ 必須要件
 
-| Tools                          | version |
+| ツール                            | バージョン   |
 |--------------------------------|---------|
 | [Node.js](https://nodejs.org/) | 20.18.0 |
 | [pnpm](https://pnpm.io/)       | 9.15.1  |
 
 > [!tip]
-> It is recommended to install Node.js using a version manager such as [nodenv](https://github.com/nodenv/nodenv).
+> Node.js は [nodenv](https://github.com/nodenv/nodenv) 等のバージョンマネージャを使ったインストールを推奨します。
 
-## 🎉 Getting Started
+## 🎉 使い方
 
-### 0. Create a repository from the template
+### 0. リポジトリの作成
 
-1. Create a repository by following the instructions in [Creating a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
-2. Change the repository settings according to the [documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow) to enable deployment from GitHubActions to GitHubPages.
-3. Once the GitHub setup is complete, download the repository locally using $ git clone.
+1. [テンプレートからリポジトリを作成する](https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) を参考にリポジトリを作成します
+2. GitHubActions から GitHubPages にデプロイできるように [ドキュメント](https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0-github-actions-%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%AB%E3%82%88%E3%82%8B%E5%85%AC%E9%96%8B) に従ってリポジトリの設定を変更します
+3. GitHub 上での設定が完了したら `$ git clone` でローカルにリポジトリをダウンロードします
 
-### 1. Repository Setup
+### 1. リポジトリのセットアップ
 
-- Change various settings such as URLs within the repository to match your ID and repository name.
-- A [dedicated script](./scripts/init) is provided for easy modification.
+- リポジトリ内に存在する URL などの各種設定を、あなたの ID やリポジトリ名に変更します
+- 簡単に変更できるよう [専用のスクリプト](./scripts/init) を用意しました
 
 ```bash
 $ scripts/init
 ```
 
-- Follow the displayed instructions and enter your GitHub user ID and repository name.
-  - Once entered, the script will automatically modify the settings.
-- Change the language and timezone settings as needed.
-  - The language setting is defined in [.marprc.yml](./.marprc.yml), and the timezone setting is specified in [.github/workflows/deploy.yml](./.github/workflows/deploy.yml).
+- 表示される内容に従って、あなたの GitHub ユーザーID と Repository 名を入力してください
+  - 入力が完了すると、スクリプトが自動で設定を変更します
+- 必要に応じて追加で言語やタイムゾーンを変更してください
+  - [.marprc.yml](./.marprc.yml) には言語の設定が、[.github/workflows/deploy.yml](./.github/workflows/deploy.yml) にはタイムゾーンの設定が記述されています
 
 > [!warning]
-> The script uses the sed command.  
-> It works fine on Mac (BSD), but on Linux (GNU), the option syntax differs, which may cause errors.  
-> Linux (GNU) users should modify the [sed command in the script](https://github.com/yKicchan/awesome-marp-template/blob/main/scripts/init#L55-L66) as needed.
+> スクリプト内で `sed` コマンドを使用しています。  
+> Mac (BSD) では問題ありませんが、Linux (GNU) ではオプションの指定が異なるためエラーが発生する可能性があります。  
+> Linux (GNU) ユーザーは[スクリプト内の `sed` コマンド](https://github.com/yKicchan/awesome-marp-template/blob/main/scripts/init#L55-L66)を適宜修正してください。
 
-### 2. Install Dependencies
+### 2. 依存関係のインストール
 
-Install the dependencies to enable [markdown-it](https://github.com/markdown-it/markdown-it) plugins and [Marp CLI](https://github.com/marp-team/marp-cli).
+[Marp CLI](https://github.com/marp-team/marp-cli) や [markdown-it](https://github.com/markdown-it/markdown-it) の各種プラグインを利用可能にするため、依存関係をインストールします。
 
 ```bash
 $ pnpm install
 ```
 
-### 3. Create a New Slide
+### 3. スライドの作成
 
-- Create slides in the `src` directory.
-- A [command](./scripts/new) is provided to easily create new slides from the [template](./template).
+- `src` ディレクトリ内にスライドを作成します
+- [テンプレート](./template) から新しいスライドを簡単に作成できる [コマンド](./scripts/new) を用意しました
 
 ```bash
-# Create a New Slide
+# 新しいスライドを作成する
 $ pnpm new <slidename>
-# If you want to group them, you can also split and create directories under src.
+# グルーピングしたい場合は src 下ディレクトリを分割して作成することも可能
 $ pnpm new path/to/<slidename>
 ```
 
-The template slides to copy are located in the [template directory](./template).  
-Feel free to customize them to suit your preferences!
+コピー元となるテンプレートスライドは [template](./template) ディレクトリ内に存在します。  
+ぜひ自分好みにカスタマイズしてください！
 
-### 4. Edit and Preview the Slide
+### 4. スライドの編集・確認
 
-Slides can be previewed in real-time in the browser using the features of [Marp CLI](https://github.com/marp-team/marp-cli).
+スライドは [Marp CLI](https://github.com/marp-team/marp-cli) の機能を利用して、ブラウザ上でリアルタイムに確認できます。
 
 ```bash
-# When editing slides under the src directory
+# src ディレクトリ下のスライドを編集する場合
 $ pnpm dev
-# When editing template slides
+# テンプレートスライドを編集する場合
 $ pnpm dev:tmp
 ```
 
 > [!warning]
-> This repository is extended using the [Engine](https://github.com/marp-team/marp-cli?tab=readme-ov-file#engine) feature of [Marp CLI](https://github.com/marp-team/marp-cli).  
-> As a result, some features of the VSCode extension [`marp-vscode`](https://github.com/marp-team/marp-vscode) are not available.  
-> For more details, refer to [@marp-team/marp-vscode/issues/85#issuecomment-543798586](https://github.com/marp-team/marp-vscode/issues/85#issuecomment-543798586).
+> このリポジトリは [Marp CLI](https://github.com/marp-team/marp-cli) の [Engine](https://github.com/marp-team/marp-cli?tab=readme-ov-file#engine) 機能を使って拡張しています。  
+> そのため VSCode 拡張機能の [`marp-vscode`](https://github.com/marp-team/marp-vscode) が一部利用できません。  
+> 詳しくは [@marp-team/marp-vscode/issues/85#issuecomment-543798586](https://github.com/marp-team/marp-vscode/issues/85#issuecomment-543798586) を参照してください。
 
-That’s it for the basic usage! 🎉
+以上で基本的な使い方は終了です！🎉
 
-## 🙌 Enjoy Marp even more! 🙌
+## 🙌 Marp をもっと楽しむ 🙌
 
-Marp allows you to customize slide designs using the features of [Marpit](https://marpit.marp.app/).  
-Additionally, you can extend the Markdown syntax using the [Engine](https://github.com/marp-team/marp-cli?tab=readme-ov-file#engine) feature of [Marp CLI](https://github.com/marp-team/marp-cli).
+Marp は [Marpit](https://marpit.marp.app/) の機能を使ってスライドのデザインをカスタマイズすることができます。  
+また、 [Marp CLI](https://github.com/marp-team/marp-cli) の [Engine](https://github.com/marp-team/marp-cli?tab=readme-ov-file#engine) 機能を使って、Markdown の構文を拡張することも可能です。
 
-In this repository, customization is mainly done in the following two ways:
+このリポジトリでは主に下記2点でカスタムしています。
 
-- Customizing the design and defining utility classes with CSS files in the [themes directory](./themes)
-- Extending Markdown syntax using various plugins of [markdown-it](https://github.com/markdown-it/markdown-it)
+- [themes](./themes) ディレクトリ内の CSS ファイルで、デザインのカスタマイズとユーティリティクラスの定義
+- [markdown-it](https://github.com/markdown-it/markdown-it) の各種プラグインを利用して、Markdown 構文を拡張  
 
-Detailed usage for each is described below.
+それぞれ詳しい使い方を以下に記述します。
 
-### Customizing the Theme
+### テーマのカスタマイズ
 
-- Theme definitions are written in [themes/index.css](./themes/index.css).
-- For example, edit this file if you want to change Marp's default theme or modify the syntax highlighting style (enabled by the integration of [`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism)).
-- Additional custom themes that affect the entire slide are written in [themes/global.css](./themes/global.css).
-- Edit this file to create your own unique theme!
-- Convenient utility classes for slides are defined in [themes/utility.css](./themes/utility.css).
-- For example, classes are added to change text sizes or to support element display in columns.
-- A few useful CSS classes are provided by default, but feel free to customize them to suit your preferences!
+- テーマの定義は [themes/index.css](./themes/index.css) に記述しています
+  - 例えば Marp のデフォルトのテーマを変更したり、 (後述する[`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism)の導入によって可能となった) Syntax highlighting のスタイルを変更する場合に編集してください
+- スライド全体に影響を与える追加のカスタムテーマは [themes/global.css](./themes/global.css) に記述しています
+  - これを編集して、自分だけのオリジナルテーマを作成しましょう！
+- スライドで利用できる便利なユーティリティクラスは [themes/utility.css](./themes/utility.css) に記述しています
+  - 例えばテキストのサイズを変更したり、要素の列表示に対応するためのクラスを追加しています
+  - デフォルトで便利な CSS クラスをいくつか用意していますが、必要に応じて自分好みにカスタマイズしてください！
 
 > [!tip]
-> The design of utility classes is inspired by [Tailwind CSS](https://tailwindcss.com/).
+> ユーティリティクラスの設計は [Tailwind CSS](https://tailwindcss.com/) が参考になります
 
-### Using Markdown Extended Syntax
+### Markdown 拡張構文の利用
 
-Markdown extension settings are written in [engine.mjs](./engine.mjs).  
-Recommended [markdown-it](https://github.com/markdown-it/markdown-it) plugins have been integrated.
+Markdown 拡張の設定は [engine.mjs](./engine.mjs) に記述しています。  
+おすすめの [markdown-it](https://github.com/markdown-it/markdown-it) プラグインを導入済みです。
 
 - [`markdown-it-container`](https://github.com/markdown-it/markdown-it-container)
 - [`markdown-it-attrs`](https://github.com/arve0/markdown-it-attrs)
@@ -154,57 +154,57 @@ Recommended [markdown-it](https://github.com/markdown-it/markdown-it) plugins ha
 - [`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism)
 - [`markdown-it-textual-uml`](https://github.com/manastalukdar/markdown-it-textual-uml)
 
-Please refer to the official documentation for each plugin.
+それぞれのプラグインについては公式ドキュメントを参照してください。
 
-## ✨The Ultimate Marp Slide Creation Technique ✨
+## ✨究極の Marp スライド作成術✨
 
-Finally, let me introduce the ultimate combination of Markdown extended syntax and custom themes, which is the essence of this repository 💪  
-You can check the actual display in the [demo slides](https://yKicchan.github.io/awesome-marp-template/demo).
+最後にこのリポジトリの真髄である Markdown 拡張構文と、カスタムテーマの合体奥義を紹介します💪  
+実際の表示は [デモスライド](https://yKicchan.github.io/awesome-marp-template/demo) で確認できます。
 
-### Assigning CSS Classes with `{.class}`
+### `{.class}` で CSS クラスの付与
 
-By using the [`markdown-it-attrs`](https://github.com/arve0/markdown-it-attrs) plugin, you can assign CSS classes to specific elements.
+[`markdown-it-attrs`](https://github.com/arve0/markdown-it-attrs) の機能を利用して、特定の要素に CSS クラスを付与することができます。
 
 ```markdown
 This is a paragraph.{.gray}
 ```
 
-This input will be converted to the following HTML.
+この入力は以下の HTML に変換されます。
 
 ```html
 <p class="gray">This is a paragraph.</p>
 ```
 
-The `.gray` class is a class defined in [themes/utility.css](./themes/utility.css) that changes the text color to gray.  
-This allows you to easily apply styles to specific elements within the slide.  
-It is also possible to specify multiple classes at the same time, as shown below.
+`.gray` クラスは [themes/utility.css](./themes/utility.css) に定義している文字色をグレーにするクラスです。  
+これにより、スライド内で特定の要素に対して簡単にスタイルを適用することができます。  
+以下のように複数のクラスを同時に指定することも可能です。
 
 ```markdown
 This is a small and gray paragraph.{.text-sm .gray}
 ```
 
-### Decorating Specific Strings with `==` and `{.class}`
+### `==` と `{.class}` で特定の文字列のみ装飾する
 
-By combining [`markdown-it-mark`](https://github.com/markdown-it/markdown-it-mark) and [`markdown-it-attrs`](https://github.com/arve0/markdown-it-attrs), you can decorate specific strings only.
+[`markdown-it-mark`](https://github.com/markdown-it/markdown-it-mark) と [`markdown-it-attrs`](https://github.com/arve0/markdown-it-attrs) の合わせ技で、特定の文字列のみを装飾することができます。
 
 ```markdown
 This is a ==red=={.red} text.
 ```
 
-This input will be converted to the following HTML.
+この入力は以下の HTML に変換されます。
 
 ```html
 <p>This is a <mark class="red">red</mark> text.</p>
 ```
 
-With [`markdown-it-mark`](https://github.com/markdown-it/markdown-it-mark), you can wrap specific strings with `==` to convert them into inline `<mark>` elements, and by applying a class to them, you can easily decorate only those specific strings.
+[`markdown-it-mark`](https://github.com/markdown-it/markdown-it-mark) によって `==` で囲った特定の文字列をインライン要素 `<mark>` にし、そこにクラスを付与することで、特定の文字列のみを簡単に装飾することができます。
 
-### Change the style for each block with [`markdown-it-container`](https://github.com/markdown-it/markdown-it-container).
+### [`markdown-it-container`](https://github.com/markdown-it/markdown-it-container) でブロックごとにスタイルを変更する
 
-By enclosing with `:::`, you can change the style for each block.  
-In this repository, `:::c` and `:::_` are predefined.
+`:::`  で囲むことで、ブロックごとにスタイルを変更することができます。  
+このリポジトリでは `:::c` と `:::_` をあらかじめ用意しています。
 
-#### Display in columns with `:::c`
+#### `:::c` で列表示
 
 ```markdown
 :::c
@@ -216,7 +216,7 @@ Column 3
 :::
 ```
 
-This input will be converted to the following HTML.
+この入力は以下の HTML に変換されます。
 
 ```html
 <div class="c">
@@ -226,10 +226,10 @@ This input will be converted to the following HTML.
 </div>
 ```
 
-The `.c` class is defined in [themes/utility.css](./themes/utility.css) as the `flex-container` setting.
-This allows you to easily display elements in a column layout within the slide.
+`.c` クラスは [themes/utility.css](./themes/utility.css) に定義している `flex-container` の設定です。  
+これにより、スライド内で列挙された要素を簡単に列表示にすることができます。
 
-#### Use `:::_` for grouping.
+#### `:::_` でグルーピング
 
 ```markdown
 :::_
@@ -241,7 +241,7 @@ Group 3
 :::
 ```
 
-This input will be converted to the following HTML.
+この入力は以下の HTML に変換されます。
 
 ```html
 <div class="_">
@@ -250,8 +250,9 @@ This input will be converted to the following HTML.
   <p>Group 3</p>
 </div>
 ```
-The `._` class is an **undefined dummy class**.  
-A specific use case is when you want to apply a style to multiple elements at once, or when you want to group elements without changing their styles.
+
+`._` クラスは**未定義のダミークラス**です。  
+具体的なユースケースは、複数の要素に一括でスタイルを適応する場合や、スタイルを変更したくはないがグルーピングのみ行いたい時に活躍します。
 
 ```markdown
 :::_ {.blue}
@@ -276,12 +277,12 @@ This is a right column text.
 ::::
 ```
 
-When nesting as shown above, you distinguish them by increasing the number of `:`.
+なお、上記のようにネストする場合は `:` の数を増やして区別します。
 
-### Display a filename in a code block with `{name=filename}`
+### `{name=filename}` でコードブロックにファイル名を表示する
 
-This repository provides a feature that allows you to easily display a filename in a code block.  
-By adding `{name=filename}` after the code block, you can display the filename.
+このリポジトリでは、簡単にコードブロックにファイル名を表示できる機能を用意しています。  
+`{name=filename}` をコードブロックの後ろに追加することで、ファイル名を表示することができます。
 
 ````markdown
 ```js {name=index.js}
@@ -290,26 +291,26 @@ console.log(message);
 ```
 ````
 
-The display will be as follows.
+表示は以下の通りになります。
 
-![Display a filename in a code block](https://github.com/user-attachments/assets/e4c5aee9-5ed1-4826-aa24-fe766c8426b1)
+![コードブロックにファイル名を表示](https://github.com/user-attachments/assets/e4c5aee9-5ed1-4826-aa24-fe766c8426b1)
 
-For the implementation details of this utility, please refer to [themes/utility.css](./themes/utility.css).
+このユーティリティの実装詳細は [themes/utility.css](./themes/utility.css) を参照してください。
 
 > [!warning]
-> The implementation method may vary depending on the theme used by Marp.  
-> If you are changing from the initial `gaia` theme in this repository, modifications are required.  
-> Specifically, implementing it with the `default` theme can be quite challenging.  
-> If you want to use this feature, it is recommended to either invent your own implementation method or select the `gaia` or `uncover` theme.
+> Marp の利用するテーマによって実装方法が異なります。
+> このリポジトリの初期の `gaia` テーマから変更する場合は修正が必要です。
+> 特に、`default` での実装はかなり難しいです。
+> この機能を利用したい場合は、実装方法を自分で発明するか、`gaia` か `uncover` テーマの選択を推奨します。
 
-### Use Alert Design
+### アラートデザインを使用する
 
-This repository provides a feature to easily apply alert designs.  
-By using the classes `.note`, `.important`, `.tip`, `.warning`, and `.caution`, you can apply alert designs.
+このリポジトリでは、簡単にアラートデザインを適用できる機能を用意しています。  
+`.note` `.important` `.tip` `.warning` `.caution` のクラスを使用することで、アラートデザインを適用できます。
 
-![Alert Design](https://github.com/user-attachments/assets/98b1a1a5-4458-444d-a1a3-cececdc0d9c2)
+![アラートデザイン](https://github.com/user-attachments/assets/98b1a1a5-4458-444d-a1a3-cececdc0d9c2)
 
 ---
 
-That concludes the explanation of this repository!  
-Feel free to use this template as a reference and enjoy creating slides that make the most out of Marp! ✨
+以上でこのリポジトリの説明は終了です！  
+ぜひこのテンプレートを参考にして、 Marp を最大限活用したスライド作成を楽しんでください！✨

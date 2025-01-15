@@ -14,8 +14,7 @@ keywords: Marp
 
 ![bg right w:256](./images/marp.png)
 
-<!-- _footer: "[Repository](https://github.com/yKicchan/awesome-marp-template)" -->
-<!-- _paginate: false -->
+<!-- フッター要素を削除すれば消える -->
 
 ---
 
@@ -31,6 +30,10 @@ keywords: Marp
 ## ## Header 2
 ### ### Header 3
 #### #### Header 4
+<!-- コメント追加 -->
+# これは# 1
+## これは## 2
+
 
 ---
 
@@ -136,6 +139,16 @@ function doSomething() {
 
 ## `.c`
 
+<!-- こうすると /* columns */
+.c {
+  display: flex;
+  gap: 1em;
+}
+.c > * {
+  flex: 1;
+}
+が反映される。
+-->
 :::c
 
 ## Columns
@@ -145,9 +158,30 @@ function doSomething() {
 :::
 
 ---
+## `.c`
+
+`:::`には要素をグルーピング化して、`:::c`←ここでつけたクラスが設定される。
+上の例だと、`:::c`をグルーピング化しているので、下記CSSが設定される。{.text-sm}
+
+```css {name=utility.css}
+.c {
+  display: flex;
+  gap: 1em;
+}
+.c > * {
+  flex: 1;
+}
+```
+
+---
 
 <style scoped>
 h3 {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 0.5em;
+}
+p {
   border: 1px solid gray;
   border-radius: 4px;
   padding: 0.5em;
@@ -160,6 +194,9 @@ h3 {
 
 ### Fitted {.fit}
 
+あまり使わなそうだけど、直接CSSを設定することもできる。
+marpは何もしなければ`p`になるので、`p`にCSSを設定したら、適用される。
+
 ---
 
 ## Margin
@@ -169,6 +206,14 @@ h3 {
 #### `.mb-1` {.mb-1}
 #### `.ml-1` {.ml-1}
 #### `.mr-1` {.mr-1}
+
+---
+
+## Margin
+
+#### これはm-4 {.m-4}
+#### これはm-2 {.m-23}
+
 
 ---
 
@@ -242,7 +287,36 @@ h3 {
 
 ---
 
-### CodeBlock + `{name=filename}`
+## ダミークラスの例
+
+::::_
+:::_  {.blue}
+## 左のタイトル
+左の文字
+:::
+:::_ {.red}
+## 右のタイトル
+右の文字
+:::
+::::
+
+---
+
+## ダミークラスの使い方
+
+`:::_`で囲って`:::`で閉じる
+
+下記ではタイトルと文字が青くなる
+```md
+:::_  {.blue}
+左のタイトル
+左の文字
+:::
+```
+
+---
+
+## CodeBlock + `{name=filename}`
 
 ```tsx {name=component.tsx}
 interface P {
@@ -282,6 +356,28 @@ by `.warning` {.warning}
 
 by `.caution` {.caution}
 :::
+
+:::::
+
+---
+
+:::::c {.text-sm}
+
+::::_
+:::_ {.note}
+This is note text
+このテキスト全部が対象になるよ
+:::
+
+:::_
+This is important text {.important}
+
+この場合、上のテキストしかimportantにならないよ
+:::
+
+This is important text
+この場合、全部Tipになるよ {.tip}
+::::
 
 :::::
 
@@ -342,7 +438,7 @@ content
 ```html {name=output}
 <ul class="zero">
   <li class="one">content</li>
-  <li attr="two"">content</li>
+  <li attr="two">content</li>
 </ul>
 ```
 
@@ -361,6 +457,10 @@ content
 ```html {name=output}
 <mark>mark</mark>
 ```
+
+==mark==
+
+++Ins++
 
 :::
 

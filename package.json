@@ -4,13 +4,7 @@
   "description": "An ultimate Marp template for your awesome presentation!",
   "main": "engine.mjs",
   "private": true,
-  "keywords": [
-    "marp",
-    "markdown",
-    "presentation",
-    "slide",
-    "template"
-  ],
+  "keywords": ["marp", "markdown", "presentation", "slide", "template"],
   "author": "yKicchan",
   "scripts": {
     "new": "scripts/new",
@@ -19,9 +13,12 @@
     "prebuild": "rm -rf dist && mkdir -p dist && cp -r src/* dist",
     "build": "marp dist --image png && marp dist",
     "start": "marp --html -s dist",
-    "check": "scripts/check"
+    "check": "scripts/check",
+    "pptx": "npx @marp-team/marp-cli ./src --pptx --theme-set ./themes/*.css --allow-local-files",
+    "pdf": "npx @marp-team/marp-cli ./src --pdf --theme-set ./themes/*.css --allow-local-files --pdf-outlines"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.3",
     "@marp-team/marp-cli": "^4.0.4",
     "@marp-team/marp-core": "^4.0.1",
     "markdown-it-attrs": "^4.3.1",

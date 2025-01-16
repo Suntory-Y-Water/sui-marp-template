@@ -1,6 +1,6 @@
 Language: [🇺🇸](./README.md) [🇯🇵](./README.ja.md)
 
-[![Deploy](https://github.com/yKicchan/awesome-marp-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/yKicchan/awesome-marp-template/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/suntory-n-water/sui-marp-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/suntory-n-water/sui-marp-template/actions/workflows/deploy.yml)
 
 # Awesome Marp Template
 
@@ -8,13 +8,13 @@ Language: [🇺🇸](./README.md) [🇯🇵](./README.ja.md)
 
 ## 🚀 機能一覧
 
-- 🚀 [GitHubActions](./.github/workflows/deploy.yml) による [GitHubPages](https://yKicchan.github.io/awesome-marp-template/) への自動デプロイ
+- 🚀 [GitHubActions](./.github/workflows/deploy.yml) による [GitHubPages](https://suntory-n-water.github.io/sui-marp-template/) への自動デプロイ
 - 🖼️ タイトルスライドの OGP 画像設定サポート
 - 🚄 Markdown 拡張構文による軽量なスライド作成
 - 🎨 CSS ユーティリティクラスによる多彩なスライド表現
 - 🔧 新しいスライドをテンプレートから簡単に作成できるスクリプト
 
-このリポジトリを利用したデモスライドは [GitHubPages](https://yKicchan.github.io/awesome-marp-template/demo) を参照してください。  
+このリポジトリを利用したデモスライドは [GitHubPages](https://suntory-n-water.github.io/sui-marp-template/demo) を参照してください。  
 Markdown 拡張構文や CSS ユーティリティクラスを使って、あなただけのオリジナルスライド環境を構築しましょう！
 
 ## 📂 ディレクトリ構造
@@ -74,7 +74,7 @@ $ scripts/init
 > [!warning]
 > スクリプト内で `sed` コマンドを使用しています。  
 > Mac (BSD) では問題ありませんが、Linux (GNU) ではオプションの指定が異なるためエラーが発生する可能性があります。  
-> Linux (GNU) ユーザーは[スクリプト内の `sed` コマンド](https://github.com/yKicchan/awesome-marp-template/blob/main/scripts/init#L55-L66)を適宜修正してください。
+> Linux (GNU) ユーザーは[スクリプト内の `sed` コマンド](https://github.com/suntory-n-water/sui-marp-template/blob/main/scripts/init#L55-L66)を適宜修正してください。
 
 ### 2. 依存関係のインストール
 
@@ -159,7 +159,7 @@ Markdown 拡張の設定は [engine.mjs](./engine.mjs) に記述しています�
 ## ✨究極の Marp スライド作成術✨
 
 最後にこのリポジトリの真髄である Markdown 拡張構文と、カスタムテーマの合体奥義を紹介します💪  
-実際の表示は [デモスライド](https://yKicchan.github.io/awesome-marp-template/demo) で確認できます。
+実際の表示は [デモスライド](https://suntory-n-water.github.io/sui-marp-template/demo) で確認できます。
 
 ### `{.class}` で CSS クラスの付与
 

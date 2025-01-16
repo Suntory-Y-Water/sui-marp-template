@@ -1,8 +1,8 @@
 ---
 marp: true
-theme: yKicchan
+theme: suntory-n-water
 paginate: true
-image: https://yKicchan.github.io/awesome-marp-template/demo/index.png
+image: https://suntory-n-water.github.io/sui-marp-template/demo/index.png
 title: Demo slide
 description: Preview test of slides created with Marp.
 keywords: Marp

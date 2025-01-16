@@ -1,8 +1,8 @@
 ---
 marp: true
-theme: yKicchan
+theme: suntory-n-water
 paginate: true
-image: https://yKicchan.github.io/awesome-marp-template/{{PATH}}/index.png
+image: https://suntory-n-water.github.io/sui-marp-template/{{PATH}}/index.png
 title:
 description:
 keywords:

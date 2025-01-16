@@ -2,6 +2,6 @@ lang: ja
 theme: themes/index.css
 themeSet: ./themes
 size: 16:9
-author: yKicchan
+author: suntory-n-water
 engine: engine.mjs
 allowLocalFiles: true

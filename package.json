@@ -5,7 +5,6 @@
   "main": "engine.mjs",
   "private": true,
   "keywords": ["marp", "markdown", "presentation", "slide", "template"],
-  "author": "yKicchan",
   "scripts": {
     "new": "scripts/new",
     "dev": "marp --debug=true -w --html -s src",

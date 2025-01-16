@@ -6,8 +6,8 @@
 set -e
 
 # variables
-OLD_USERNAME="yKicchan"
-OLD_REPOSITORY_NAME="awesome-marp-template"
+OLD_USERNAME="suntory-n-water"
+OLD_REPOSITORY_NAME="sui-marp-template"
 
 # colors
 GREEN="\x1b[32m"

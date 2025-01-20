@@ -70,6 +70,16 @@ keywords: Marp
 
 ---
 
+## Table2
+
+| header | header | header | header |
+| --- | --- | --- | --- |
+| body | body | body | body |
+| body | body | body | body |
+| body | body | body | body |
+
+---
+
 ## Quote
 
 > Block quote

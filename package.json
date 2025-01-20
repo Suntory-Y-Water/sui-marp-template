@@ -1,6 +1,7 @@
 {
   "name": "marp-template",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.6.0",
   "description": "An ultimate Marp template for your awesome presentation!",
   "main": "engine.mjs",
   "private": true,

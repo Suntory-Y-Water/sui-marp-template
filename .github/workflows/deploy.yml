@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set execute permissions for scripts
+        run: chmod +x ./scripts/check
       # Check if the OGP URLs and slide directory structure are correct
       - name: Check OGP url
         run: ./scripts/check

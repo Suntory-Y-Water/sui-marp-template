@@ -6,6 +6,12 @@ Language: [🇺🇸](./README.md) [🇯🇵](./README.ja.md)
 
 このリポジトリは [Marp](https://marp.app/) を最強に活用したスライドを、超簡単に作成できるテンプレートリポジトリです。
 
+# 注意事項
+
+> [!warning]
+> marpで生成したスライドは直接編集できないため、再ビルドが必要です。
+> ビルドしたあと、distフォルダにあるhtmlをブラウザからダウンロードしてPDFにすることで、再配布が可能です。
+
 ## 🚀 機能一覧
 
 - 🚀 [GitHubActions](./.github/workflows/deploy.yml) による [GitHubPages](https://suntory-n-water.github.io/sui-marp-template/) への自動デプロイ

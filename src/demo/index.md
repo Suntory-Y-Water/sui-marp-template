@@ -20,6 +20,15 @@ keywords: Marp
 
 <!-- _class: invert -->
 
+## 注意
+
+このスライドは`marp`で自動生成したスライドです。
+直接編集するには`index.md`を編集してビルドし直してください。
+
+---
+
+<!-- _class: invert -->
+
 ## Markdown
 
 ---

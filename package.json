@@ -10,12 +10,10 @@
     "new": "scripts/new",
     "dev": "marp --debug=true -w --html -s src",
     "dev:tmp": "marp --debug=true -w --html -s template",
-    "prebuild": "rm -rf dist && mkdir -p dist && cp -r src/* dist",
+    "prebuild": "rm -rf dist && mkdir dist && cp -r src/* dist",
     "build": "marp dist --image png && marp dist",
     "start": "marp --html -s dist",
-    "check": "scripts/check",
-    "pptx": "npx @marp-team/marp-cli ./src --pptx --theme-set ./themes/*.css --allow-local-files",
-    "pdf": "npx @marp-team/marp-cli ./src --pdf --theme-set ./themes/*.css --allow-local-files --pdf-outlines"
+    "check": "scripts/check"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",

@@ -568,3 +568,77 @@ digraph example1 {
 ```
 
 :::
+
+---
+
+<!-- _class: invert -->
+<!-- header: '' -->
+
+## header, footer
+
+---
+
+<!-- header: 'header' -->
+
+## header
+
+---
+
+<!-- header: '' -->
+<!-- _footer: "this is footer" -->
+
+## footer
+
+---
+
+<!-- header: 'CodeBlock size 17行' -->
+
+```tsx {name=get-posts.usecase.ts}
+import { inject, injectable } from 'inversify';
+import type { PostId } from '../../../domain/models/posts';
+import type { IPostRepository } from '../../../infrastructure/repositories/i-post-repository';
+import { REPOSITORY_BINDINGS } from '../../../keys';
+import { GetPostUseCaseDto } from '../models/get-post.model';
+
+@injectable()
+export class GetPostUseCase {
+  constructor(
+    @inject(REPOSITORY_BINDINGS.PostRepository) private repository: IPostRepository,
+  ) {}
+
+  async execute(id: PostId): Promise<GetPostUseCaseDto> {
+    const post = await this.repository.findPost(id);
+    return new GetPostUseCaseDto(post);
+  }
+}
+```
+
+---
+
+<!-- header: 'CodeBlock size 25行' -->
+```tsx {name=get-post.controller.ts}
+import type { Context } from 'hono';
+import { inject, injectable } from 'inversify';
+import type { GetPostUseCase } from '../../application/usecases/post/get-posts.usecase';
+import { createPostId } from '../../domain/models/posts';
+import { USECASE_BINDINGS } from '../../keys';
+import type { BaseController } from './base.controller';
+
+@injectable()
+export class GetPostController implements BaseController {
+  constructor(
+    @inject(USECASE_BINDINGS.GetPostUseCase) private usecase: GetPostUseCase,
+  ) {}
+
+  async main(c: Context) {
+    return this.mainFn(c);
+  }
+
+  private async mainFn(c: Context) {
+    const id = Number.parseInt(c.req.param('id'));
+    const postId = createPostId(id);
+    const posts = await this.usecase.execute(postId);
+    return c.json(posts);
+  }
+}
+```

@@ -3,6 +3,16 @@
 /* Custom theme affecting the entire slide */
 
 /* common */
+section {
+  --color-background: #fff !important;
+  --color-foreground: #333 !important;
+}
+
+section.invert {
+  --color-background: #333 !important;
+  --color-foreground: #fff !important;
+}
+
 section *::selection {
   background: rgba(110, 110, 255, 0.38);
 }

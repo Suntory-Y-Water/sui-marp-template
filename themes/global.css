@@ -65,3 +65,20 @@ marp-pre {
 :not(marp-pre) code {
   border-radius: 8px;
 }
+
+/* ヘッダーの右上に企業ロゴを配置 */
+header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 25px; /* gaiaテーマのヘッダーpaddingと合わせる */
+  top: 10px; /* gaiaテーマのヘッダーpaddingと合わせる */
+  width: 50px; /* ロゴのサイズ（必要に応じて変更） */
+  height: 50px;
+  background: url("./images/icon.png") top right;
+  background-size: contain;
+}
+
+section[style*="background"] header::after {
+  display: none;
+}

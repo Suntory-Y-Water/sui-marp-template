@@ -12,7 +12,7 @@ keywords: Marp
 
 # Demo Slide
 
-![bg right w:256](./images/marp.png)
+![bg right w:256](./images/icon.png)
 
 <!-- フッター要素を削除すれば消える -->
 
@@ -132,18 +132,6 @@ function doSomething() {
 ![w:64](./images/marp-logo.svg) w:64
 ![w:128](./images/marp-logo.svg) w:128
 ![w:256](./images/marp-logo.svg) w:256
-
----
-
-## Table & Image
-
-| key | value |
-| --- | --- |
-| class | bg |
-| size | w:512 |
-| position | right |
-
-![bg w:512 right](./images/marp-logo.svg)
 
 ---
 
@@ -642,3 +630,20 @@ export class GetPostController implements BaseController {
   }
 }
 ```
+
+---
+
+<!-- header: 'ヘッダーの文字列' -->
+
+## 感じたこと
+
+テキストベースのサイズがかなり大きい
+
+---
+
+<!-- header: ' ' -->
+
+## 文字列を消す
+
+そうすると画像も消えてしまう
+なのでヘッダーを空文字ではなく'△'(半角1文字)にする
